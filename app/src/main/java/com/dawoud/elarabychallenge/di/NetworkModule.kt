@@ -1,6 +1,7 @@
 package com.dawoud.androidengineerchallenge.di
 
 
+import com.dawoud.elarabychallenge.data.network.api.NewsApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -42,5 +43,11 @@ object NetworkModule {
             .addConverterFactory(ScalarsConverterFactory.create())
             .build()
 
+    }
+    @Singleton
+    @Provides
+    fun providePNewsCall(retrofit: Retrofit): NewsApi {
+        return retrofit
+            .create(NewsApi::class.java)
     }
 }

@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.dawoud.data.cache.NewsRoomDataBase
+import com.dawoud.data.cache.dao.CountryNewsDao
+import com.dawoud.data.cache.dao.PopularNewsDao
 
 import dagger.Module
 import dagger.Provides
@@ -21,5 +23,15 @@ object CacheModule {
         return Room.databaseBuilder(context, NewsRoomDataBase::class.java, NewsRoomDataBase.DATABASE_NAME)
             .fallbackToDestructiveMigration()
             .build()
+    }
+    @Singleton
+    @Provides
+    fun provideCountryNewsDAO(roomDatabase: NewsRoomDataBase): CountryNewsDao {
+        return roomDatabase.countryNewsDao()
+    }
+    @Singleton
+    @Provides
+    fun providePopularNewsDAO(roomDatabase: NewsRoomDataBase): PopularNewsDao {
+        return roomDatabase.popularNewsDao()
     }
 }

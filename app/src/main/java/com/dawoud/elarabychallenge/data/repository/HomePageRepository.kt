@@ -4,26 +4,25 @@ import com.dawoud.data.cache.dao.CountryNewsDao
 import com.dawoud.data.cache.dao.PopularNewsDao
 import com.dawoud.elarabychallenge.data.cache.entity.CountryNewsEntity
 import com.dawoud.elarabychallenge.data.cache.entity.PopularNewsEntity
-import com.dawoud.elarabychallenge.data.network.api.newsApi
+import com.dawoud.elarabychallenge.data.network.api.NewsApi
 import com.dawoud.elarabychallenge.data.network.dto.GeneralNewsDto
 import com.dawoud.elarabychallenge.domain.repository.HomePageGetAway
-import com.dawoud.elarabychallenge.domain.utils.Constant
 import retrofit2.Response
 
 class HomePageRepository constructor(
-    val newsApi: newsApi,
-    val countryNewsDao: CountryNewsDao,
-    val popularNewsDao: PopularNewsDao
+    private val NewsApi: NewsApi,
+    private val countryNewsDao: CountryNewsDao,
+    private val popularNewsDao: PopularNewsDao
 ): HomePageGetAway {
     override suspend fun getCountryNewsNetwork(
         country: String,
         token: String
-    ): Response<GeneralNewsDto> = newsApi.getCountryNewsApi(country , token)
+    ): Response<GeneralNewsDto> = NewsApi.getCountryNewsApi(country , token)
 
     override suspend fun getPopularNewsNetwork(
         source: String,
         token: String
-    ): Response<GeneralNewsDto> = newsApi.getSourceNewsApi(source, token)
+    ): Response<GeneralNewsDto> = NewsApi.getSourceNewsApi(source, token)
 
     override suspend fun getpopularNewsCache(): List<PopularNewsEntity> = popularNewsDao.getAllNews()
 

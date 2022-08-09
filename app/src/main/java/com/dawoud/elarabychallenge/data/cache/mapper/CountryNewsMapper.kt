@@ -6,6 +6,9 @@ import com.dawoud.elarabychallenge.data.cache.entity.SourceEntity
 import com.dawoud.elarabychallenge.domain.model.NewsModel
 import com.dawoud.elarabychallenge.domain.model.SourceModel
 
+fun List<CountryNewsEntity>.toListModel():List<NewsModel>{
+    return this.map { it.toModel() }
+}
 fun CountryNewsEntity.toModel(): NewsModel {
     return NewsModel(
         source = source?.tomodel(),
