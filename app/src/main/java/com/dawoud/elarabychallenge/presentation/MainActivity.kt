@@ -1,7 +1,8 @@
-package com.dawoud.elarabychallenge
+package com.dawoud.elarabychallenge.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dawoud.elarabychallenge.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
