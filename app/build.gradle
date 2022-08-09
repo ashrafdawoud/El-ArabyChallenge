@@ -1,0 +1,67 @@
+import Dependancies.CoreDependancies
+import Dependancies.TestDependancies
+import Dependancies.RoomDependancies
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.dawoud.elarabychallenge"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation(CoreDependancies.CORE_KTX)
+    implementation(CoreDependancies.APPCOMPAT)
+    implementation(CoreDependancies.MATERIAL)
+    implementation(CoreDependancies.CONSTRAINTLAYOUT)
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //test
+    testImplementation(TestDependancies.JUNIT)
+    androidTestImplementation(TestDependancies.EXT_JUNIT)
+    androidTestImplementation(TestDependancies.ESPRESSO_CORE)
+    //hilt
+    implementation(HiltDependancies.HILT)
+    kapt(HiltDependancies.HILT_COMPILER)
+    //Cororutines
+    implementation(Dependancies.KotlinDependancies.COROUTINES)
+    //navigation
+    implementation(Dependancies.KotlinDependancies.NavigationFragment)
+    implementation(Dependancies.KotlinDependancies.NavigationUi)
+    //Retrofit
+    implementation (Dependancies.RetrofitDependancy.RETROFIT)
+    implementation (Dependancies.RetrofitDependancy.GSON)
+    implementation (Dependancies.RetrofitDependancy.GSONGOOGLE)
+    implementation (Dependancies.RetrofitDependancy.CONVERTERSCALER)
+    //Room
+    implementation(RoomDependancies.ROOM_RUNTIME)
+    kapt(RoomDependancies.ROOM_Compiler)
+    implementation(RoomDependancies.ROOM_KTX)
+}
