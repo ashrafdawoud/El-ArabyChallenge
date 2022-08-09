@@ -36,7 +36,7 @@ object NetworkModule {
             .connectTimeout(60, TimeUnit.SECONDS)
             .build()
         return Retrofit.Builder()
-            .baseUrl("https://newsapi.org/")
+            .baseUrl("https://newsapi.org/v2/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addConverterFactory(ScalarsConverterFactory.create())
