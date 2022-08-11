@@ -10,8 +10,7 @@ import javax.annotation.Nullable
 data class CountryNewsEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    @Nullable
-    val id: Int?,
+    val id: Int,
     @ColumnInfo(name = "source")
     @Nullable
     @TypeConverters(SourceEntityConverters::class)

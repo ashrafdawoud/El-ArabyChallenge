@@ -19,11 +19,11 @@ class HomePageViewModel @Inject constructor(
     private val countryNewsUseCase: GetCountryNewsUseCase,
     private val popularNewsUseCase: GetPopularNewsUseCase
 ) : ViewModel() {
-    val _counryNewsModelDataSet: MutableLiveData<Resource<List<NewsModel>>> = MutableLiveData()
+    private val _counryNewsModelDataSet: MutableLiveData<Resource<List<NewsModel>>> = MutableLiveData()
     val counryNewsModelDataSet: LiveData<Resource<List<NewsModel>>>
         get() = _counryNewsModelDataSet
-    val _popularNewsModelDataSet: MutableLiveData<Resource<List<NewsModel>>> = MutableLiveData()
-    val popularNewsModelDataSet: LiveData<Resource<List<NewsModel>>>
+    private val _popularNewsModelDataSet: MutableLiveData<Resource<List<NewsModel>>> = MutableLiveData()
+     val popularNewsModelDataSet: LiveData<Resource<List<NewsModel>>>
         get() = _popularNewsModelDataSet
 
     fun getCountryNews() {

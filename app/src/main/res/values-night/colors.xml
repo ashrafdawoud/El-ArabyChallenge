@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_background_color">#000</color>
+    <color name="nav_color">#000</color>
+    <color name="native_color">#000</color>
+    <color name="oppsite_color">#fff</color>
+    <color name="gray">#5F5F5F</color>
+
+</resources>

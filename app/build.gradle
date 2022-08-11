@@ -34,6 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -43,6 +46,11 @@ dependencies {
     implementation(CoreDependancies.MATERIAL)
     implementation(CoreDependancies.CONSTRAINTLAYOUT)
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //noinspection GradleCompatible
+    implementation (CoreDependancies.RECYCLERVIEW)
+    //noinspection GradleCompatible
+    implementation (CoreDependancies.CARDVIEW)
+    implementation (CoreDependancies.PICASSO)
     //test
     testImplementation(TestDependancies.JUNIT)
     androidTestImplementation(TestDependancies.EXT_JUNIT)

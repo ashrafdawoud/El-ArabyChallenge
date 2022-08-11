@@ -17,12 +17,11 @@ class GetCountryNewsUseCase @Inject constructor(
     suspend fun invoke(): Flow<Resource<List<NewsModel>>> = flow {
         emit(Resource.Loading)
         try {
-            val countryNews =
-                homePageGetAway.getCountryNewsNetwork(Constant.egyptCountry, Constant.apiKey)
+            val countryNews = homePageGetAway.getCountryNewsNetwork(Constant.egyptCountry, Constant.apiKey)
             if (countryNews.isSuccessful) {
                 countryNews.body()?.let {
-                    homePageGetAway.DeleteCountryNewsTable()
                     it.articles?.let {
+                        homePageGetAway.DeleteCountryNewsTable()
                         for (item in it)
                             homePageGetAway.setCountryNewsCache(item.toModel().toCountryEntity())
                     }
