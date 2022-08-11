@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.SearchScreen.SearchFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="searchRequist"
+            type="com.dawoud.elarabychallenge.domain.model.searchScreen.SearchRequist" />
+        <variable
+            name="listener"
+            type="com.dawoud.elarabychallenge.presentation.searchScreen.SearchViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="search screen" />
+        android:orientation="vertical"
+        tools:context=".presentation.searchScreen.SearchFragment"
+        android:layout_margin="7dp">
 
-</FrameLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@={searchRequist.query}"
+            android:afterTextChanged="@{() -> listener.search(searchRequist)}"
+            android:background="@drawable/searchview_background"
+            android:hint="search.."
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchRecy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+</layout>
