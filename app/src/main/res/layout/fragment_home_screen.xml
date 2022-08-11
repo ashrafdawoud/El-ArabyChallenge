@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:text="News"
             android:textSize="20dp"
+            android:textStyle="bold"
             android:layout_margin="5dp"
             android:textColor="@color/oppsite_color"/>
         <androidx.recyclerview.widget.RecyclerView
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:text="Latest News"
             android:textSize="20dp"
+            android:textStyle="bold"
             android:layout_margin="5dp"
             android:textColor="@color/oppsite_color"/>
         <androidx.recyclerview.widget.RecyclerView

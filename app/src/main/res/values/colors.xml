@@ -12,4 +12,5 @@
     <color name="native_color">#fff</color>
     <color name="oppsite_color">#000</color>
     <color name="gray">#5F5F5F</color>
+    <color name="card_background">#fff</color>
 </resources>

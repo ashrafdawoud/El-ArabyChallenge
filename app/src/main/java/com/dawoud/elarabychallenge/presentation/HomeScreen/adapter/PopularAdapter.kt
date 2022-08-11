@@ -25,7 +25,7 @@ class PopularAdapter(val  context: Context, val data:List<NewsModel>) : Recycler
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.popular_Item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.popular_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: PopularAdapter.ViewHolder, position: Int) {

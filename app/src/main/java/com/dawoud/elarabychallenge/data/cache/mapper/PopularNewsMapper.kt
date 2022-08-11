@@ -31,7 +31,6 @@ fun SourceEntity.tomodel(): SourceModel {
 
 fun NewsModel.toPopularEntity(): PopularNewsEntity {
     return PopularNewsEntity(
-        id = 0,
         source = source?.toEntity(),
         author = author,
         title = title,

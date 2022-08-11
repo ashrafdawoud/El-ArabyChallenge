@@ -5,5 +5,6 @@
     <color name="native_color">#000</color>
     <color name="oppsite_color">#fff</color>
     <color name="gray">#5F5F5F</color>
+    <color name="card_background">#111111</color>
 
 </resources>

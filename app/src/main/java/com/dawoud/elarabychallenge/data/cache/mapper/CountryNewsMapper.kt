@@ -24,7 +24,6 @@ fun CountryNewsEntity.toModel(): NewsModel {
 
 fun NewsModel.toCountryEntity(): CountryNewsEntity {
     return CountryNewsEntity(
-        id = 0,
         source = source?.toEntity(),
         author = author,
         title = title,

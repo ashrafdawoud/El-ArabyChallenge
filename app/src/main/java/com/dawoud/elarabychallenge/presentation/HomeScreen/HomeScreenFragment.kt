@@ -78,7 +78,7 @@ class HomeScreenFragment : Fragment() {
                     binding.popularRecyclerview.let {
                         it.layoutManager = layoutManager
                         it.hasFixedSize()
-                        it.adapter = countryAdapter
+                        it.adapter = popularAdapter
                     }
                     popularAdapter.notifyDataSetChanged()
                 }

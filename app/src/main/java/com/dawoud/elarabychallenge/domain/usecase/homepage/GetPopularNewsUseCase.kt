@@ -15,26 +15,26 @@ import javax.inject.Inject
 class GetPopularNewsUseCase @Inject constructor(
     private val homePageGetAway: HomePageGetAway
 ) {
-    suspend fun invoke(): Flow<Resource<List<NewsModel>>> = flow {
+    suspend fun invoke(token:String): Flow<Resource<List<NewsModel>>> = flow {
         emit(Resource.Loading)
         try {
-            val BBCNews = homePageGetAway.getPopularNewsNetwork(Constant.BBCNEWS, Constant.apiKey)
-            val NEXTWEBNews = homePageGetAway.getPopularNewsNetwork(Constant.NEXTWEB, Constant.apiKey)
+            val BBCNews = homePageGetAway.getPopularNewsNetwork(Constant.BBCNEWS, token)
+            val NEXTWEBNews = homePageGetAway.getPopularNewsNetwork(Constant.NEXTWEB, token)
 
             if (BBCNews.isSuccessful || NEXTWEBNews.isSuccessful) {
 
-                homePageGetAway.DeleteCountryNewsTable()
+                homePageGetAway.DeletePopularNewsTable()
 
                 BBCNews.body()?.let {
-                    it.articles?.let {
-                        for (item in it)
+                    it.articles?.let {it2->
+                        for (item in it2)
                             homePageGetAway.setPopularNewsCache(item.toModel().toPopularEntity())
                     }
                 }
 
                 NEXTWEBNews.body()?.let {
-                    it.articles?.let {
-                        for (item in it)
+                    it.articles?.let {it2->
+                        for (item in it2)
                             homePageGetAway.setPopularNewsCache(item.toModel().toPopularEntity())
                     }
                 }
@@ -43,7 +43,7 @@ class GetPopularNewsUseCase @Inject constructor(
             } else {
                 emit(
                     Resource.Error(
-                        "Response have An Error",
+                        BBCNews.errorBody()!!.string() ?: NEXTWEBNews.errorBody()!!.string(),
                         homePageGetAway.getpopularNewsCache().toListModel()
                     )
                 )

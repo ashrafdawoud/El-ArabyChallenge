@@ -9,8 +9,7 @@ import javax.annotation.Nullable
 data class PopularNewsEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    @Nullable
-    val id: Int?,
+    val id: Int=0,
     @ColumnInfo(name = "source")
     @Nullable
     @TypeConverters(SourceEntityConverters::class)

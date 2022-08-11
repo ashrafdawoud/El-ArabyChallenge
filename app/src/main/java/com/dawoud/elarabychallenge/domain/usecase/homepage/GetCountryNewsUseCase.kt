@@ -14,10 +14,10 @@ import javax.inject.Inject
 class GetCountryNewsUseCase @Inject constructor(
     private val homePageGetAway: HomePageGetAway
 ) {
-    suspend fun invoke(): Flow<Resource<List<NewsModel>>> = flow {
+    suspend fun invoke(country:String , token:String): Flow<Resource<List<NewsModel>>> = flow {
         emit(Resource.Loading)
         try {
-            val countryNews = homePageGetAway.getCountryNewsNetwork(Constant.egyptCountry, Constant.apiKey)
+            val countryNews = homePageGetAway.getCountryNewsNetwork(country ,token)
             if (countryNews.isSuccessful) {
                 countryNews.body()?.let {
                     it.articles?.let {
@@ -28,7 +28,7 @@ class GetCountryNewsUseCase @Inject constructor(
                 }
                 emit(Resource.Success(homePageGetAway.getCountryNewsCache().toListModel()))
             } else {
-                emit(Resource.Error("Response have An Error" , homePageGetAway.getCountryNewsCache().toListModel()))
+                emit(Resource.Error(countryNews.errorBody()!!.string() , homePageGetAway.getCountryNewsCache().toListModel()))
             }
         } catch (e: Exception) {
             emit(Resource.Error(e.message?:e.toString() , homePageGetAway.getCountryNewsCache().toListModel()))

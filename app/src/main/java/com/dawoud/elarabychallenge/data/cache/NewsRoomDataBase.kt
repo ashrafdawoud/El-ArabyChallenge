@@ -11,7 +11,7 @@ import com.dawoud.elarabychallenge.data.cache.entity.SourceEntityConverters
 
 
 @Database(
-    entities = [CountryNewsEntity::class , PopularNewsEntity::class], version = 2, exportSchema = false
+    entities = [CountryNewsEntity::class , PopularNewsEntity::class], version = 3, exportSchema = false
 )
 @TypeConverters(SourceEntityConverters::class)
 abstract class NewsRoomDataBase : RoomDatabase() {

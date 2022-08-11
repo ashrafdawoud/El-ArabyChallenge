@@ -8,6 +8,7 @@ import com.dawoud.domain.utils.Resource
 import com.dawoud.elarabychallenge.domain.model.NewsModel
 import com.dawoud.elarabychallenge.domain.usecase.homepage.GetCountryNewsUseCase
 import com.dawoud.elarabychallenge.domain.usecase.homepage.GetPopularNewsUseCase
+import com.dawoud.elarabychallenge.domain.utils.Constant
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -28,7 +29,7 @@ class HomePageViewModel @Inject constructor(
 
     fun getCountryNews() {
         viewModelScope.launch {
-            countryNewsUseCase.invoke().onEach {
+            countryNewsUseCase.invoke(Constant.egyptCountry , Constant.apiKey).onEach {
                 _counryNewsModelDataSet.value = it
             }.launchIn(viewModelScope)
         }
@@ -36,7 +37,7 @@ class HomePageViewModel @Inject constructor(
 
     fun getPopularNews() {
         viewModelScope.launch {
-            countryNewsUseCase.invoke().onEach {
+            popularNewsUseCase.invoke(Constant.apiKey).onEach {
                 _popularNewsModelDataSet.value = it
             }.launchIn(viewModelScope)
         }
