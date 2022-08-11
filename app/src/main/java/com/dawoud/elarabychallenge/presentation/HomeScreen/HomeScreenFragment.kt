@@ -11,10 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dawoud.domain.utils.Resource
-import com.dawoud.elarabychallenge.R
 import com.dawoud.elarabychallenge.databinding.FragmentHomeScreenBinding
 import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.CountryAdapter
-import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.PopularAdapter
+import com.dawoud.elarabychallenge.presentation.Adapter.GeneralAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +21,7 @@ class HomeScreenFragment : Fragment() {
     lateinit var binding: FragmentHomeScreenBinding
     val viewModel: HomePageViewModel by viewModels()
     lateinit var countryAdapter: CountryAdapter
-    lateinit var popularAdapter: PopularAdapter
+    lateinit var generalAdapter: GeneralAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -73,14 +72,14 @@ class HomeScreenFragment : Fragment() {
             when (it) {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
-                    popularAdapter = PopularAdapter(requireContext(), it.data)
+                    generalAdapter = GeneralAdapter(requireContext(), it.data)
                     var layoutManager = LinearLayoutManager(context?.applicationContext, LinearLayoutManager.VERTICAL, false)
                     binding.popularRecyclerview.let {
                         it.layoutManager = layoutManager
                         it.hasFixedSize()
-                        it.adapter = popularAdapter
+                        it.adapter = generalAdapter
                     }
-                    popularAdapter.notifyDataSetChanged()
+                    generalAdapter.notifyDataSetChanged()
                 }
                 is Resource.Error -> {
                     Log.e("ee",it.exception)

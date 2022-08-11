@@ -6,5 +6,6 @@
     <color name="oppsite_color">#fff</color>
     <color name="gray">#5F5F5F</color>
     <color name="card_background">#111111</color>
+    <color name="serachbackcolor">#1C1C1C</color>
 
 </resources>

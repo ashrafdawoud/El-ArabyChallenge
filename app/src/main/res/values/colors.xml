@@ -13,4 +13,5 @@
     <color name="oppsite_color">#000</color>
     <color name="gray">#5F5F5F</color>
     <color name="card_background">#fff</color>
+    <color name="serachbackcolor">#D8D7D7</color>
 </resources>

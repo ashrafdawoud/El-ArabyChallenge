@@ -11,5 +11,7 @@ interface NewsApi {
     suspend fun getCountryNewsApi(@Query(value = "country")  country:String, @Query(value = "apiKey")  apiKey:String) : Response<GeneralNewsDto>
     @GET("top-headlines")
     suspend fun getSourceNewsApi(@Query(value = "sources")  sources:String, @Query(value = "apiKey")  apiKey:String) : Response<GeneralNewsDto>
+    @GET("everything")
+    suspend fun SearchApi(@Query(value = "q")  q:String, @Query(value = "apiKey")  apiKey:String) : Response<GeneralNewsDto>
 
 }
