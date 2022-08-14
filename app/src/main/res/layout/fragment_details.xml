@@ -10,8 +10,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.DetailsScreen.DetailsFragment"
-        android:layout_margin="5dp">
+        tools:context=".presentation.DetailsScreen.DetailsFragment">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
@@ -29,20 +28,24 @@
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/searchview_background"
-                        app:layout_collapseMode="parallax" />
+                        app:layout_collapseMode="parallax"
+                        android:foreground="@drawable/transparent_layer"/>
 
                     <androidx.appcompat.widget.Toolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="?actionBarSize"
-                        app:layout_collapseMode="pin" >
+                        app:layout_collapseMode="pin"
+                        style="@style/Toolbar.TitleText"
+                        android:background="#00000000">
                         <ImageView
                             android:id="@+id/bookmark"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:src="@drawable/ic_baseline_bookmark_border_24"
                             android:layout_gravity="end"
-                            android:layout_marginEnd="10dp"/>
+                            android:layout_marginEnd="10dp"
+                             />
                     </androidx.appcompat.widget.Toolbar>
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -52,23 +55,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     >
                     <TextView
+                        android:id="@+id/second_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="title"
                         android:textStyle="bold"
                         android:textSize="20dp"/>
                     <TextView
+                        android:id="@+id/discription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="title"
-                        android:textSize="18dp"/>
+                        android:textSize="18dp"
+                        android:layout_marginTop="10dp"/>
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
 

@@ -9,7 +9,9 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.dawoud.elarabychallenge.R
-import com.dawoud.elarabychallenge.domain.model.NewsModel
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
+import com.dawoud.elarabychallenge.presentation.HomeScreen.HomeScreenFragmentDirections
+import com.dawoud.elarabychallenge.presentation.searchScreen.SearchFragmentDirections
 import com.squareup.picasso.Picasso
 
 class SearchAdapter(val  context: Context, val data:List<NewsModel>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
@@ -31,8 +33,8 @@ class SearchAdapter(val  context: Context, val data:List<NewsModel>) : RecyclerV
         holder.time.setText(data.get(position).publishedAt)
         Picasso.get().load(data.get(position).urlToImage).into(holder.image)
         holder.itemView.setOnClickListener {
-            it.findNavController().navigate(R.id.action_searchFragment_to_detailsFragment)
-
+            val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(data.get(position))
+            it.findNavController().navigate(action)
         }
     }
     override fun getItemCount(): Int {

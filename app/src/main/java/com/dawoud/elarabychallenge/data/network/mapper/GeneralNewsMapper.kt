@@ -6,8 +6,8 @@ import com.dawoud.elarabychallenge.data.network.dto.GeneralNewsDto
 import com.dawoud.elarabychallenge.data.network.dto.NewsDto
 import com.dawoud.elarabychallenge.data.network.dto.SourceDto
 import com.dawoud.elarabychallenge.domain.model.GeneralNewsModel
-import com.dawoud.elarabychallenge.domain.model.NewsModel
 import com.dawoud.elarabychallenge.domain.model.SourceModel
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 
 fun GeneralNewsDto.toModel(): GeneralNewsModel {
     return GeneralNewsModel(

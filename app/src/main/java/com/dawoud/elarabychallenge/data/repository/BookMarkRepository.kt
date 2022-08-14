@@ -2,7 +2,7 @@ package com.dawoud.elarabychallenge.data.repository
 
 import com.dawoud.elarabychallenge.data.cache.dao.BookMarkNewsDao
 import com.dawoud.elarabychallenge.data.cache.entity.BookMarkNewsEntity
-import com.dawoud.elarabychallenge.domain.model.NewsModel
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 import com.dawoud.elarabychallenge.domain.repository.BookMarkGetAway
 
 class BookMarkRepository constructor(

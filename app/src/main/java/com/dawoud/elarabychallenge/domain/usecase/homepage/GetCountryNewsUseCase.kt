@@ -4,9 +4,8 @@ import com.dawoud.domain.utils.Resource
 import com.dawoud.elarabychallenge.data.cache.mapper.toCountryEntity
 import com.dawoud.elarabychallenge.data.cache.mapper.toListModel
 import com.dawoud.elarabychallenge.data.network.mapper.toModel
-import com.dawoud.elarabychallenge.domain.model.NewsModel
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 import com.dawoud.elarabychallenge.domain.repository.HomePageGetAway
-import com.dawoud.elarabychallenge.domain.utils.Constant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

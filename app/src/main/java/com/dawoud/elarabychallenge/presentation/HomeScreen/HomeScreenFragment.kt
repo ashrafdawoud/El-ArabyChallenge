@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dawoud.domain.utils.Resource
 import com.dawoud.elarabychallenge.R
 import com.dawoud.elarabychallenge.databinding.FragmentHomeScreenBinding
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.CountryAdapter
 import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.PopularAdapter
 import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.SearchAdapter
@@ -37,6 +38,7 @@ class HomeScreenFragment : Fragment() {
             container,
             false
         )
+
         setUpNav()
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

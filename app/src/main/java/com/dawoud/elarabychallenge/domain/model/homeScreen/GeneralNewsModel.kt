@@ -1,6 +1,6 @@
 package com.dawoud.elarabychallenge.domain.model
 
-import java.io.Serializable
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 data class GeneralNewsModel(
     val status: String?,
     val totalResults :String?,

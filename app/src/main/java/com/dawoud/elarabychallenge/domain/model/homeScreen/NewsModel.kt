@@ -1,4 +1,6 @@
 package com.dawoud.elarabychallenge.domain.model.homeScreen
+import java.io.Serializable
+import com.dawoud.elarabychallenge.domain.model.SourceModel
 
 data class NewsModel(
     val source: SourceModel?,

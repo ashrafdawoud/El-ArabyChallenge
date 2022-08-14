@@ -1,4 +1,4 @@
-package com.dawoud.elarabychallenge.presentation.DetailsScreen
+package com.dawoud.elarabychallenge.presentation.BookMarkScreen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +8,7 @@ import com.dawoud.domain.utils.Resource
 import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 import com.dawoud.elarabychallenge.domain.usecase.detailsPage.CheckIfBookMarkExsist
 import com.dawoud.elarabychallenge.domain.usecase.detailsPage.DeleteBookMarkRaw
+import com.dawoud.elarabychallenge.domain.usecase.detailsPage.GetAllBookMark
 import com.dawoud.elarabychallenge.domain.usecase.detailsPage.SetNewsToBookMark
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -16,10 +17,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailsScreenViewModel @Inject constructor(
+class BookMarkViewModel  @Inject constructor(
     private val checkIfBookMarkExsist: CheckIfBookMarkExsist,
     private val deleteBookMarkRaw: DeleteBookMarkRaw,
-    private val setNewsToBookMark: SetNewsToBookMark
+    private val setNewsToBookMark: SetNewsToBookMark,
+    private val getAllBookMark: GetAllBookMark,
 ) : ViewModel() {
     private val _checkIfExsistDataSet: MutableLiveData<Resource<Boolean>> = MutableLiveData()
     val checkIfExsistDataSet: LiveData<Resource<Boolean>>
@@ -32,6 +34,9 @@ class DetailsScreenViewModel @Inject constructor(
     private val _insertDataSet: MutableLiveData<Resource<Long>> = MutableLiveData()
     val insertDataSet: LiveData<Resource<Long>>
         get() = _insertDataSet
+    private val _savedDataSet: MutableLiveData<Resource<List<NewsModel>>> = MutableLiveData()
+    val savedDataSet: LiveData<Resource<List<NewsModel>>>
+        get() = _savedDataSet
 
     fun checkIfBookMarkExsist(newsModel: NewsModel) {
         viewModelScope.launch {
@@ -57,11 +62,11 @@ class DetailsScreenViewModel @Inject constructor(
                 }.launchIn(viewModelScope)
         }
     }
-    fun getAllNewsToBookMark(newsModel: NewsModel) {
+    fun getAllNewsToBookMark() {
         viewModelScope.launch {
-            setNewsToBookMark.invoke(newsModel)
+            getAllBookMark.invoke()
                 .onEach {
-                    _insertDataSet.value = it
+                    _savedDataSet.value = it
                 }.launchIn(viewModelScope)
         }
     }

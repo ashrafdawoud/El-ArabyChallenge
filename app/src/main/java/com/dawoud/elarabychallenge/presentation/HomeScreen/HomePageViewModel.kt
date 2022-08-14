@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dawoud.domain.utils.Resource
-import com.dawoud.elarabychallenge.domain.model.NewsModel
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 import com.dawoud.elarabychallenge.domain.usecase.homepage.GetCountryNewsUseCase
 import com.dawoud.elarabychallenge.domain.usecase.homepage.GetPopularNewsUseCase
 import com.dawoud.elarabychallenge.domain.utils.Constant

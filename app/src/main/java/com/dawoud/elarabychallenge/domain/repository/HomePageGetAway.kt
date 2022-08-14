@@ -4,7 +4,6 @@ import com.dawoud.elarabychallenge.data.cache.entity.CountryNewsEntity
 import com.dawoud.elarabychallenge.data.cache.entity.PopularNewsEntity
 import com.dawoud.elarabychallenge.data.network.dto.GeneralNewsDto
 import com.dawoud.elarabychallenge.domain.model.GeneralNewsModel
-import com.dawoud.elarabychallenge.domain.model.NewsModel
 import retrofit2.Response
 
 interface HomePageGetAway {

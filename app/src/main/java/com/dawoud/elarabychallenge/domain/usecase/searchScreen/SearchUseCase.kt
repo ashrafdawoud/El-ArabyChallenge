@@ -2,8 +2,7 @@ package com.dawoud.elarabychallenge.domain.usecase.searchScreen
 
 import com.dawoud.domain.utils.Resource
 import com.dawoud.elarabychallenge.data.network.mapper.toListModel
-import com.dawoud.elarabychallenge.data.repository.SearchPageRepository
-import com.dawoud.elarabychallenge.domain.model.NewsModel
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 import com.dawoud.elarabychallenge.domain.model.searchScreen.SearchRequist
 import com.dawoud.elarabychallenge.domain.repository.SearchPageGetAway
 import kotlinx.coroutines.flow.Flow

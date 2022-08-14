@@ -16,7 +16,13 @@
             app:destination="@id/detailsFragment"
             app:restoreState="true"
             app:popUpTo="@id/action_detailsFragment_to_homeScreenFragment"
-            app:popUpToSaveState="true"/>
+            app:popUpToSaveState="true">
+            <argument
+                android:name="newsModel"
+                app:argType="com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel"
+                app:nullable="true" />
+        </action>
+
 
     </fragment>
     <fragment
@@ -24,7 +30,10 @@
         android:name="com.dawoud.elarabychallenge.presentation.DetailsScreen.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details">
-
+        <argument
+            android:name="newsModel"
+            app:argType="com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel"
+            app:nullable="true" />
         <action
             android:id="@+id/action_detailsFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
@@ -40,9 +49,15 @@
         android:name="com.dawoud.elarabychallenge.presentation.BookMarkScreen.BookMarkFragment"
         android:label="fragment_book_mark"
         tools:layout="@layout/fragment_book_mark">
+
         <action
             android:id="@+id/action_bookMarkFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment" >
+            <argument
+                android:name="newsModel"
+                app:argType="com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel"
+                app:nullable="true" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -54,7 +69,12 @@
             app:destination="@id/detailsFragment"
             app:restoreState="true"
             app:popUpTo="@id/action_detailsFragment_to_searchFragment"
-            app:popUpToSaveState="true"/>
+            app:popUpToSaveState="true">
+            <argument
+                android:name="newsModel"
+                app:argType="com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel"
+                app:nullable="true" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/settingsFragment2"

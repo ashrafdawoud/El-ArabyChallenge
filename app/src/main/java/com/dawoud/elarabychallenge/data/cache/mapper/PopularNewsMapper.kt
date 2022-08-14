@@ -3,8 +3,8 @@ package com.dawoud.elarabychallenge.data.cache.mapper
 import com.dawoud.elarabychallenge.data.cache.entity.CountryNewsEntity
 import com.dawoud.elarabychallenge.data.cache.entity.PopularNewsEntity
 import com.dawoud.elarabychallenge.data.cache.entity.SourceEntity
-import com.dawoud.elarabychallenge.domain.model.NewsModel
 import com.dawoud.elarabychallenge.domain.model.SourceModel
+import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 
 fun List<PopularNewsEntity>.toListModel():List<NewsModel>{
     return this.map { it.toModel() }
