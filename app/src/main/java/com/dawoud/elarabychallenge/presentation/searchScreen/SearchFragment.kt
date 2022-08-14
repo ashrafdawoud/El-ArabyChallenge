@@ -16,6 +16,7 @@ import com.dawoud.elarabychallenge.databinding.FragmentSearchBinding
 import com.dawoud.elarabychallenge.domain.model.searchScreen.SearchRequist
 import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.SearchAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,7 +51,9 @@ class SearchFragment : Fragment() {
                         it.hasFixedSize()
                     }
                 }
-                is Resource.Error ->{}
+                is Resource.Error -> {
+                    Snackbar.make(activity!!.findViewById(android.R.id.content), it.exception.toString(), Snackbar.LENGTH_LONG).show()
+                }
             }
         })
     }

@@ -2,7 +2,6 @@ package com.dawoud.elarabychallenge.data.repository
 
 import com.dawoud.elarabychallenge.data.ProvideFakeData
 import com.dawoud.elarabychallenge.data.network.dto.GeneralNewsDto
-import com.dawoud.elarabychallenge.domain.model.NewsModel
 import com.dawoud.elarabychallenge.domain.repository.SearchPageGetAway
 import okhttp3.ResponseBody
 import retrofit2.Response

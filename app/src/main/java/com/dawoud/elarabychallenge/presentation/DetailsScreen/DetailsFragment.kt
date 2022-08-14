@@ -22,6 +22,7 @@ import com.dawoud.elarabychallenge.databinding.FragmentDetailsBinding
 import com.dawoud.elarabychallenge.domain.model.homeScreen.NewsModel
 import com.dawoud.elarabychallenge.presentation.HomeScreen.HomePageViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -77,7 +78,11 @@ class DetailsFragment : Fragment() {
                         binding.bookmark.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_bookmark_24))
                     }
                 }
+                is Resource.Error -> {
+                    Snackbar.make(activity!!.findViewById(android.R.id.content), it.exception.toString(), Snackbar.LENGTH_LONG).show()
+                }
             }
+
         })
         viewModel.insertDataSet.observe(requireActivity(), Observer {
             when(it){
@@ -85,6 +90,9 @@ class DetailsFragment : Fragment() {
                     bookMarkFlag = true
                     binding.bookmark.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_bookmark_24))
 
+                }
+                is Resource.Error -> {
+                    Snackbar.make(activity!!.findViewById(android.R.id.content), it.exception.toString(), Snackbar.LENGTH_LONG).show()
                 }
             }
         })
@@ -94,6 +102,9 @@ class DetailsFragment : Fragment() {
                     bookMarkFlag = false
                     binding.bookmark.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_bookmark_border_24))
 
+                }
+                is Resource.Error -> {
+                    Snackbar.make(activity!!.findViewById(android.R.id.content), it.exception.toString(), Snackbar.LENGTH_LONG).show()
                 }
             }
         })

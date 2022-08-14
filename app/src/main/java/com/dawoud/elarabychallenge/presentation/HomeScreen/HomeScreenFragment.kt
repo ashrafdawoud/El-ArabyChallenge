@@ -19,6 +19,7 @@ import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.CountryAdapte
 import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.PopularAdapter
 import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.SearchAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -74,7 +75,7 @@ class HomeScreenFragment : Fragment() {
                     countryAdapter.notifyDataSetChanged()
                 }
                 is Resource.Error -> {
-                    Log.e("ee",it.exception)
+                    Snackbar.make(activity!!.findViewById(android.R.id.content), it.exception.toString(), Snackbar.LENGTH_LONG).show()
                 }
             }
         })
@@ -94,7 +95,7 @@ class HomeScreenFragment : Fragment() {
                     popularAdapter.notifyDataSetChanged()
                 }
                 is Resource.Error -> {
-                    Log.e("ee",it.exception)
+                    Snackbar.make(activity!!.findViewById(android.R.id.content), it.exception.toString(), Snackbar.LENGTH_LONG).show()
                 }
             }
         })
