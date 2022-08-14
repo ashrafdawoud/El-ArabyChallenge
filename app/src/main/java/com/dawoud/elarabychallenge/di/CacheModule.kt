@@ -6,6 +6,7 @@ import androidx.room.RoomDatabase
 import com.dawoud.data.cache.NewsRoomDataBase
 import com.dawoud.data.cache.dao.CountryNewsDao
 import com.dawoud.data.cache.dao.PopularNewsDao
+import com.dawoud.elarabychallenge.data.cache.dao.BookMarkNewsDao
 
 import dagger.Module
 import dagger.Provides
@@ -33,5 +34,10 @@ object CacheModule {
     @Provides
     fun providePopularNewsDAO(roomDatabase: NewsRoomDataBase): PopularNewsDao {
         return roomDatabase.popularNewsDao()
+    }
+    @Singleton
+    @Provides
+    fun provideBookMarkNewsDAO(roomDatabase: NewsRoomDataBase): BookMarkNewsDao {
+        return roomDatabase.bookmarkDao()
     }
 }

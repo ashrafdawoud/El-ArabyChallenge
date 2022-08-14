@@ -3,9 +3,12 @@ package com.dawoud.androidengineerchallenge.di
 
 import com.dawoud.data.cache.dao.CountryNewsDao
 import com.dawoud.data.cache.dao.PopularNewsDao
+import com.dawoud.elarabychallenge.data.cache.dao.BookMarkNewsDao
 import com.dawoud.elarabychallenge.data.network.api.NewsApi
+import com.dawoud.elarabychallenge.data.repository.BookMarkRepository
 import com.dawoud.elarabychallenge.data.repository.HomePageRepository
 import com.dawoud.elarabychallenge.data.repository.SearchPageRepository
+import com.dawoud.elarabychallenge.domain.repository.BookMarkGetAway
 import com.dawoud.elarabychallenge.domain.repository.HomePageGetAway
 import com.dawoud.elarabychallenge.domain.repository.SearchPageGetAway
 import dagger.Module
@@ -32,5 +35,12 @@ object RepositoryModule {
         NewsApi: NewsApi,
     ): SearchPageGetAway {
         return SearchPageRepository(NewsApi)
+    }
+    @Singleton
+    @Provides
+    fun provideBookMarkRepository(
+        bookMarkNewsDao: BookMarkNewsDao,
+    ): BookMarkGetAway {
+        return BookMarkRepository(bookMarkNewsDao)
     }
 }

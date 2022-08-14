@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dawoud.domain.utils.Resource
+import com.dawoud.elarabychallenge.R
 import com.dawoud.elarabychallenge.databinding.FragmentHomeScreenBinding
 import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.CountryAdapter
-import com.dawoud.elarabychallenge.presentation.Adapter.GeneralAdapter
+import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.PopularAdapter
+import com.dawoud.elarabychallenge.presentation.HomeScreen.adapter.SearchAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +25,7 @@ class HomeScreenFragment : Fragment() {
     lateinit var binding: FragmentHomeScreenBinding
     val viewModel: HomePageViewModel by viewModels()
     lateinit var countryAdapter: CountryAdapter
-    lateinit var generalAdapter: GeneralAdapter
+    lateinit var popularAdapter: PopularAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +37,12 @@ class HomeScreenFragment : Fragment() {
             container,
             false
         )
+        setUpNav()
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                requireActivity().finishAffinity()
+            }
+        })
         return binding.root
     }
 
@@ -72,20 +82,26 @@ class HomeScreenFragment : Fragment() {
             when (it) {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
-                    generalAdapter = GeneralAdapter(requireContext(), it.data)
+                    popularAdapter = PopularAdapter(requireContext(), it.data)
                     var layoutManager = LinearLayoutManager(context?.applicationContext, LinearLayoutManager.VERTICAL, false)
                     binding.popularRecyclerview.let {
                         it.layoutManager = layoutManager
                         it.hasFixedSize()
-                        it.adapter = generalAdapter
+                        it.adapter = popularAdapter
                     }
-                    generalAdapter.notifyDataSetChanged()
+                    popularAdapter.notifyDataSetChanged()
                 }
                 is Resource.Error -> {
                     Log.e("ee",it.exception)
                 }
             }
         })
+    }
+    fun setUpNav(){
+        try {
+            val navBar: BottomNavigationView = requireActivity().findViewById(R.id.activity_main_bottom_navigation_view)
+            navBar.visibility = View.VISIBLE
+        }catch (e:Exception){}
     }
 
 }

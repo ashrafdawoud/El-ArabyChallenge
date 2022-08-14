@@ -1,11 +1,14 @@
 import Dependancies.CoreDependancies
 import Dependancies.TestDependancies
 import Dependancies.RoomDependancies
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id("kotlinx-serialization")
 }
 
 android {
@@ -47,10 +50,10 @@ dependencies {
     implementation(CoreDependancies.CONSTRAINTLAYOUT)
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //noinspection GradleCompatible
-    implementation (CoreDependancies.RECYCLERVIEW)
+    implementation(CoreDependancies.RECYCLERVIEW)
     //noinspection GradleCompatible
-    implementation (CoreDependancies.CARDVIEW)
-    implementation (CoreDependancies.PICASSO)
+    implementation(CoreDependancies.CARDVIEW)
+    implementation(CoreDependancies.PICASSO)
     //test
     testImplementation(TestDependancies.JUNIT)
     androidTestImplementation(TestDependancies.EXT_JUNIT)
@@ -64,12 +67,13 @@ dependencies {
     implementation(Dependancies.KotlinDependancies.NavigationFragment)
     implementation(Dependancies.KotlinDependancies.NavigationUi)
     //Retrofit
-    implementation (Dependancies.RetrofitDependancy.RETROFIT)
-    implementation (Dependancies.RetrofitDependancy.GSON)
-    implementation (Dependancies.RetrofitDependancy.GSONGOOGLE)
-    implementation (Dependancies.RetrofitDependancy.CONVERTERSCALER)
+    implementation(Dependancies.RetrofitDependancy.RETROFIT)
+    implementation(Dependancies.RetrofitDependancy.GSON)
+    implementation(Dependancies.RetrofitDependancy.GSONGOOGLE)
+    implementation(Dependancies.RetrofitDependancy.CONVERTERSCALER)
     //Room
     implementation(RoomDependancies.ROOM_RUNTIME)
     kapt(RoomDependancies.ROOM_Compiler)
     implementation(RoomDependancies.ROOM_KTX)
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2"
 }

@@ -37,4 +37,6 @@ class MainActivity : AppCompatActivity() {
     fun switchMode(){
         applicationMode.excuteDesign(this)
     }
+
+
 }

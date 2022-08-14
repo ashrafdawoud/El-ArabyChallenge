@@ -16,7 +16,7 @@ class SearchUseCase @Inject constructor(
     suspend fun invoke(searchRequist: SearchRequist, apiKey: String): Flow<Resource<List<NewsModel>>> = flow {
         emit(Resource.Loading)
         try {
-            if (!searchRequist.query.equals("")) {
+            if (!searchRequist.query.isEmpty()||!searchRequist.query.replace(" ","").equals("")) {
                 val searcmodels = searchPageGetAway.search(searchRequist.query, apiKey)
                 if (searcmodels.isSuccessful){
                     searcmodels.body()?.let {
